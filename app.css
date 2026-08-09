@@ -5,9 +5,9 @@
     color: #f4f6fa;
 }
 
-header[data-testid="stHeader"] {
+/*header[data-testid="stHeader"] {
     display: none;
-}
+}*/
 
 .block-container { padding-top: 2rem; padding-bottom: 2rem; }
 
