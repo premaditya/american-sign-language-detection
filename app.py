@@ -389,10 +389,13 @@ elif page == "Image":
 else:
 
     st.title("Click on START for Video")
+    
+    # Remove the st.warning, _= and """ comment  when executing in your system
 
     st.warning("Testing if the webcam is causing the app to crash")
 
-    """webrtc_streamer(
+    
+    _ = """webrtc_streamer(
 
         key="asl-webcam",
 
