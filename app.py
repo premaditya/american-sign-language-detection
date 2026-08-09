@@ -393,7 +393,7 @@ else:
     # Remove the warning, _= and """ comment  when executing in your system
 
     st.markdown("""
-    <div class = "webcam-warning" style = "background-color: light gray; color: white; border-radius: 10px; border-left: 5px solid yellow;">
+    <div class = "webcam-warning" style = "background-color: light gray; color: white; border-radius: 10px; border-left: 5px solid yellow; padding = 5px">
         ⚠️ Live webcam detection is temporarily unavailable while I
         improve its stability on this hosting platform.<br>
         In the meantime, please use the <strong>Image</strong> option in the sidebar — 
