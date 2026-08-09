@@ -392,7 +392,14 @@ else:
     
     # Remove the st.warning, _= and """ comment  when executing in your system
 
-    st.warning("Testing if the webcam is causing the app to crash")
+    st.warning(
+        "⚠️ Live webcam detection is temporarily unavailable while we "
+        "improve its stability on this hosting platform. "
+        "In the meantime, please use the **Image** option in the sidebar — "
+        "you can upload a photo or take a picture with your camera, "
+        "and get the same prediction results.",
+        icon="⚠️"
+    )
 
     
     _ = """webrtc_streamer(
