@@ -393,15 +393,15 @@ else:
     # Remove the warning, _= and """ comment  when executing in your system
 
     st.markdown("""
-    <div class = "webcam-warning" style = "background-color: light gray; color: white; border-radius: 10px; border-left: 5px solid yellow; padding = 5px">
-        ⚠️ Live webcam detection is temporarily unavailable while I
-        improve its stability on this hosting platform.<br>
-        In the meantime, please use the <strong>Image</strong> option in the sidebar — 
-        you can upload a photo or take a picture with your camera,
-        and get the same prediction results.
-        <p style = "text-align: center;"><strong>THANK YOU</strong></p>
+    <div style="background-color: #333333; color: white; border-radius: 10px; border-left: 5px solid yellow; padding: 15px;">
+    ⚠️ Live webcam detection is temporarily unavailable while I
+    improve its stability on this hosting platform.<br><br>
+    In the meantime, please use the <strong>Image</strong> option in the sidebar —
+    you can upload a photo or take a picture with your camera,
+    and get the same prediction results.
+    <p style="text-align: center;"><strong>THANK YOU</strong></p>
     </div>
-    """,unsafe_allow_html = True)
+    """,unsafe_allow_html=True)
 
     
     _ = """webrtc_streamer(
