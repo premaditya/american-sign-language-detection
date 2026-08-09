@@ -390,17 +390,18 @@ else:
 
     st.title("Click on START for Video")
     
-    # Remove the st.warning, _= and """ comment  when executing in your system
+    # Remove the warning, _= and """ comment  when executing in your system
 
-    st.warning(
-        "Live webcam detection is temporarily unavailable while I "
-        "improve its stability on this hosting platform. "
-        "In the meantime, please use the **Image** option in the sidebar — "
-        "you can upload a photo or take a picture with your camera, "
-        "and get the same prediction results. "
-        " **THANK YOU** ",
-        icon="⚠️"
-    )
+    st.markdown("""
+    <div class = "webcam-warning" style = "background-color: gray; color: white; border-radius: 10px; border-left: 2px solid yellow;">
+        ⚠️ Live webcam detection is temporarily unavailable while I
+        improve its stability on this hosting platform.
+        In the meantime, please use the **Image** option in the sidebar — 
+        you can upload a photo or take a picture with your camera,
+        and get the same prediction results.
+        <p style = "text-align: center;"><strong>THANK YOU</strong></p>
+    </div>
+    """,unsafe_allow_html = True)
 
     
     _ = """webrtc_streamer(
