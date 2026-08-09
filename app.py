@@ -393,7 +393,7 @@ else:
     # Remove the st.warning, _= and """ comment  when executing in your system
 
     st.warning(
-        "⚠️ Live webcam detection is temporarily unavailable while we "
+        "Live webcam detection is temporarily unavailable while we "
         "improve its stability on this hosting platform. "
         "In the meantime, please use the **Image** option in the sidebar — "
         "you can upload a photo or take a picture with your camera, "
