@@ -390,7 +390,7 @@ else:
 
     st.title("Click on START for Video")
 
-    st.wraning("Testing if the webcam is causing the app to crash")
+    st.warning("Testing if the webcam is causing the app to crash")
 
     """webrtc_streamer(
 
