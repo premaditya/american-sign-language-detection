@@ -397,8 +397,8 @@ else:
         "improve its stability on this hosting platform. "
         "In the meantime, please use the **Image** option in the sidebar — "
         "you can upload a photo or take a picture with your camera, "
-        "and get the same prediction results."
-        "**THANK YOU",
+        "and get the same prediction results. "
+        " **THANK YOU** ",
         icon="⚠️"
     )
 
