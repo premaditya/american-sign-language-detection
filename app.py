@@ -404,7 +404,7 @@ else:
     """,unsafe_allow_html=True)
 
     
-    webrtc_streamer(
+    _ = """webrtc_streamer(
 
         key="asl-webcam",
 
@@ -440,4 +440,4 @@ else:
 
         video_processor_factory=VideoProcessor
 
-    )
+    )"""
