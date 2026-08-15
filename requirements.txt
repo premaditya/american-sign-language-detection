@@ -2,7 +2,7 @@ streamlit
 streamlit-webrtc
 av
 opencv-python-headless
-mediapipe
+mediapipe==1.0.0
 numpy
 Pillow
 tensorflow
