@@ -2,8 +2,8 @@ import streamlit as st
 
 from PIL import Image
 
-from src.image_predictor import predict_image
-from src.video_processor import VideoProcessor
+#from src.image_predictor import predict_image
+#from src.video_processor import VideoProcessor
 
 from streamlit_webrtc import webrtc_streamer
 
@@ -404,7 +404,7 @@ else:
     """,unsafe_allow_html=True)
 
     
-    webrtc_streamer(
+    _= """webrtc_streamer(
 
         key="asl-webcam",
 
@@ -440,4 +440,4 @@ else:
 
         video_processor_factory=VideoProcessor
 
-    )
+    )"""
