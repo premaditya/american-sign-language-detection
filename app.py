@@ -3,9 +3,9 @@ import streamlit as st
 from PIL import Image
 
 from src.image_predictor import predict_image
-from src.video_processor import VideoProcessor
+#from src.video_processor import VideoProcessor
 
-from streamlit_webrtc import webrtc_streamer
+#from streamlit_webrtc import webrtc_streamer
 
 
 st.set_page_config(
@@ -476,53 +476,21 @@ else:
     """, unsafe_allow_html= True)
 
     st.markdown("---")
+    
     st.markdown("""
-        <div class = "suggest">
-         <p>💡New to ASL? Visit Learn ASL...<p>
-        </div>
-        """, unsafe_allow_html= True)
-
-    st.markdown("""
-    <div class = "desc_header">
-    <h2>🤟 How to Use the Webcam</h2>
+    <div style="background-color: #333333; color: white; border-radius: 10px; border-left: 5px solid yellow; padding: 15px;">
+    ⚠️ Live webcam detection is temporarily unavailable while I
+    improve its stability on this hosting platform.<br><br>
+    In the meantime, please use the <strong>Image</strong> option in the sidebar —
+    you can upload a photo or take a picture with your camera,
+    and get the same prediction results.
+    <p style="text-align: center;"><strong>THANK YOU</strong></p>
     </div>
-    """, unsafe_allow_html= True)
-    st.markdown("""
-    <div class = "usage">
-    <ul>
-    <li>Learn a sign first — If you're new to ASL, visit Learn ASL to see the A–Z hand signs.</li>
-    <li>Start the webcam — Click START and allow camera access when your browser asks.</li>
-    <li>Show one hand — Keep only one hand in the camera frame.</li>
-    <li>Keep your hand visible — Make sure your entire hand and fingers are clearly visible.</li>
-    <li>Hold the sign steady — Keep the hand shape steady while the model detects the hand landmarks.</li>
-    <li>Check the prediction — The detected letter and confidence will appear while using the webcam.</li>
-    </ul>
-    </div>
-    """, unsafe_allow_html= True)
-
-    st.markdown("""
-    <div class = "desc_header">
-    <h2>💡 Tips for Better Detection</h2>
-    </div>
-    """, True)
-
-    st.markdown("""
-    <div class = "usage">
-    <ul>
-    <li>Use good lighting.</li>
-    <li>Keep your entire hand inside the frame.</li>
-    <li>Avoid covering your fingers.</li>
-    <li>Use a relatively clear background.</li>
-    <li>Hold the sign steady.</li>
-    <li>If the prediction is wrong, remove your hand and try the sign again.</li>
-    </ul>
-    </div>
-    """, unsafe_allow_html= True)
-
+    """,unsafe_allow_html=True)
 
     st.markdown("---")
     
-    webrtc_streamer(
+    _ = """webrtc_streamer(
 
         key="asl-webcam",
 
@@ -558,4 +526,4 @@ else:
 
         video_processor_factory=VideoProcessor
 
-    )
+    )"""
