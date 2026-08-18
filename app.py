@@ -3,9 +3,9 @@ import streamlit as st
 from PIL import Image
 
 from src.image_predictor import predict_image
-#from src.video_processor import VideoProcessor
+from src.video_processor import VideoProcessor
 
-#from streamlit_webrtc import webrtc_streamer
+from streamlit_webrtc import webrtc_streamer
 
 
 st.set_page_config(
@@ -46,7 +46,7 @@ def display_prediction(top_5_pred):
 
     pred_color = confidence_color(
     pred_confidence
-)
+    )
 
     # --------------------------------
     # MAIN PREDICTION
@@ -100,6 +100,8 @@ def display_prediction(top_5_pred):
             """,unsafe_allow_html=True)
 
 
+
+
 with st.sidebar:
 
     # --------------------------------
@@ -126,7 +128,7 @@ with st.sidebar:
 
     page = st.radio(
         "Select Page",
-        ["Home", "Image", "Webcam"]
+        ["Home", "Learn ASL", "Image", "Webcam"]
     )
 
 
@@ -297,12 +299,87 @@ if page == "Home":
     """, unsafe_allow_html=True)
 
 
+elif page == "Learn ASL":
+
+    left, center, right = st.columns([1,4,1])
+
+    with center:
+
+        st.markdown("""
+        <div class = "header">
+        <h1>🤘Learn American Sign Language</h1>
+        <p style = "text-align: center;">View the signs for A–Z and try them yourself using the Webcam.</p>
+        </div>
+        """, unsafe_allow_html= True)
+
+    st.markdown("---")
+
+
+    letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+    columns = st.columns(5)
+
+    for index, i in enumerate(letters):
+
+        with columns[index%5]:
+
+            image = Image.open(f"assets/asl_alphabet/{i}.jpg")
+
+
+            st.markdown(f"""
+            <div class = "asl_caption">
+                <h2>SIGN : {i}</h2>
+            </div>
+            """, unsafe_allow_html= True)
+
+            st.image(
+                image,
+                width= 210
+            )
+
+            st.markdown("---")
+
+
 
 elif page == "Image":
 
-    st.title("Upload Image/Take Picture")
+    st.markdown("""
+    <div class = "header">
+    <h1>Upload Image/Take Picture</h1>
+    </div>
+    """, unsafe_allow_html= True)
 
     st.markdown("---")
+
+    st.markdown("""
+    <div class = "suggest">
+     <p>💡New to ASL? Visit Learn ASL...<p>
+    </div>
+    """, unsafe_allow_html= True)
+    
+    st.markdown("""
+        <div class = "desc_header">
+        <h2>📷 How to Get a Better Prediction</h2>
+        </div>
+        """,unsafe_allow_html= True)
+
+    
+
+    st.markdown("""
+        <div class="usage">
+        <ul>
+        <li>Show one hand — MediaPipe detects one hand at a time.</li>
+        <li>Keep your entire hand visible — Make sure your fingers are inside the image.</li>
+        <li>Use good lighting — Avoid very dark or heavily shadowed images.</li>
+        <li>Make the sign clearly — Match the ASL reference shown in Learn ASL.</li>
+        <li>Keep the hand steady — A clear image helps the model detect the hand landmarks.</li>
+        <li>Avoid cluttered backgrounds — A simple background can make hand detection easier.</li>
+        </ul>
+    
+        </div>
+        """, unsafe_allow_html=True)
+
+
 
 
     mode = st.radio(
@@ -321,35 +398,38 @@ elif page == "Image":
 
         if uploaded_file is not None:
 
+            img_col1, img_col2, img_col3 = st.columns([1,2,1])
+
             if st.button("Predict"):
 
                 image = Image.open(
                     uploaded_file
                 )
 
-                st.image(
-                    image,
-                    caption="Uploaded Image",
-                    use_container_width=True
-                )
-
-                top_5_pred, error = predict_image(image)
-
-                if error == "no_hand":
-
-                    st.warning(
-                        "No hand detected. Please place your hand clearly in the camera."
+                with img_col2:
+                    st.image(
+                        image,
+                        caption="Uploaded Image",
+                        width= 600
                     )
 
-                elif error == "prediction_failed":
+                    top_5_pred, error = predict_image(image)
 
-                    st.error(
-                        "Prediction failed."
-                    )
+                    if error == "no_hand":
 
-                else:
+                        st.warning(
+                            "No hand detected. Please place your hand clearly in the camera."
+                        )
 
-                    display_prediction(top_5_pred)
+                    elif error == "prediction_failed":
+
+                        st.error(
+                            "Prediction failed."
+                        )
+
+                    else:
+
+                        display_prediction(top_5_pred)
 
 
     else:
@@ -388,23 +468,61 @@ elif page == "Image":
 
 else:
 
-    st.title("Click on START for Video")
-    
-    # Remove the warning, _= and """ comment  when executing in your system
 
     st.markdown("""
-    <div style="background-color: #333333; color: white; border-radius: 10px; border-left: 5px solid yellow; padding: 15px;">
-    ⚠️ Live webcam detection is temporarily unavailable while I
-    improve its stability on this hosting platform.<br><br>
-    In the meantime, please use the <strong>Image</strong> option in the sidebar —
-    you can upload a photo or take a picture with your camera,
-    and get the same prediction results.
-    <p style="text-align: center;"><strong>THANK YOU</strong></p>
+    <div class = "header">
+    <h1>Live Webcam<?h1>
     </div>
-    """,unsafe_allow_html=True)
+    """, unsafe_allow_html= True)
 
+    st.markdown("---")
+    st.markdown("""
+        <div class = "suggest">
+         <p>💡New to ASL? Visit Learn ASL...<p>
+        </div>
+        """, unsafe_allow_html= True)
+
+    st.markdown("""
+    <div class = "desc_header">
+    <h2>🤟 How to Use the Webcam</h2>
+    </div>
+    """, unsafe_allow_html= True)
+    st.markdown("""
+    <div class = "usage">
+    <ul>
+    <li>Learn a sign first — If you're new to ASL, visit Learn ASL to see the A–Z hand signs.</li>
+    <li>Start the webcam — Click START and allow camera access when your browser asks.</li>
+    <li>Show one hand — Keep only one hand in the camera frame.</li>
+    <li>Keep your hand visible — Make sure your entire hand and fingers are clearly visible.</li>
+    <li>Hold the sign steady — Keep the hand shape steady while the model detects the hand landmarks.</li>
+    <li>Check the prediction — The detected letter and confidence will appear while using the webcam.</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html= True)
+
+    st.markdown("""
+    <div class = "desc_header">
+    <h2>💡 Tips for Better Detection</h2>
+    </div>
+    """, True)
+
+    st.markdown("""
+    <div class = "usage">
+    <ul>
+    <li>Use good lighting.</li>
+    <li>Keep your entire hand inside the frame.</li>
+    <li>Avoid covering your fingers.</li>
+    <li>Use a relatively clear background.</li>
+    <li>Hold the sign steady.</li>
+    <li>If the prediction is wrong, remove your hand and try the sign again.</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html= True)
+
+
+    st.markdown("---")
     
-    _ = """webrtc_streamer(
+    webrtc_streamer(
 
         key="asl-webcam",
 
@@ -440,4 +558,4 @@ else:
 
         video_processor_factory=VideoProcessor
 
-    )"""
+    )
