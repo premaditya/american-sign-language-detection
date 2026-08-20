@@ -340,10 +340,56 @@ div[data-testid = "stImage"]:hover{
 
 
 @media (max-width: 768px) {
-    .block-container { padding-left: 1rem; padding-right: 1rem; }
-    .header h1 { font-size: 1.7rem; padding: 12px; margin-top: 20px; }
-    .desc, .usage, .inst { padding: 15px; }
-    .pred-main-card { padding: 15px; }
-    .pred-main-header { font-size: 1.2rem; }
-    .sidebar-author-links { gap: 10px; }
+    .block-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .header h1 {
+        font-size: 1.7rem;
+        padding: 12px;
+        margin-top: 20px;
+    }
+
+    .desc, .usage, .inst {
+        padding: 15px;
+    }
+
+    .pred-main-card {
+        padding: 15px;
+    }
+
+    .pred-main-header {
+        font-size: 1.2rem;
+    }
+
+    .sidebar-author-links {
+        gap: 10px;
+    }
+
+    div[data-testid="stHorizontalBlock"] {
+        flex-wrap: wrap !important;
+    }
+
+    div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
+        flex: 0 0 50% !important;
+        width: 50% !important;
+        max-width: 50% !important;
+    }
+
+    div[data-testid="stImage"] img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+    }
+
+    .asl_caption {
+        margin-left: 4px;
+        margin-right: 4px;
+        padding: 6px 4px;
+    }
+
+    .asl_caption h2 {
+        font-size: 1.1rem;
+    }
 }
