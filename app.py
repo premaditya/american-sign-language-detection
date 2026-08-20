@@ -334,7 +334,7 @@ elif page == "Learn ASL":
 
             st.image(
                 image,
-                width= 210
+                use_container_width = True
             )
 
             st.markdown("---")
