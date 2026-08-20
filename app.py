@@ -317,72 +317,28 @@ elif page == "Learn ASL":
 
     letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-    # ================================
-# DESKTOP VERSION
-# ================================
-
-    st.markdown(
-        '<div class="asl-desktop-gallery">',unsafe_allow_html=True)
-    
     columns = st.columns(5)
-    
+
     for index, i in enumerate(letters):
-    
-        with columns[index % 5]:
-    
+
+        with columns[index%5]:
+
             image = Image.open(f"assets/asl_alphabet/{i}.jpg")
-    
+
+
             st.markdown(f"""
-            <div class="asl_caption">
+            <div class = "asl_caption">
                 <h2>SIGN : {i}</h2>
             </div>
-            """, unsafe_allow_html=True)
-    
+            """, unsafe_allow_html= True)
+
             st.image(
                 image,
-                use_container_width=True
+                width= 210
             )
-    
+
             st.markdown("---")
-    
-    st.markdown(
-        '</div>',
-        unsafe_allow_html=True
-    )
-    
-    
-    # ================================
-    # MOBILE VERSION
-    # ================================
-    
-    st.markdown(
-        '<div class="asl-mobile-gallery">',
-        unsafe_allow_html=True
-    )
-    
-    for i in letters:
-    
-        image = Image.open(f"assets/asl_alphabet/{i}.jpg")
-    
-        st.markdown(f"""
-        <div class="asl-mobile-card">
-            <div class="asl_caption">
-                <h2>SIGN : {i}</h2>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-        st.image(
-            image,
-            use_container_width=True
-        )
-    
-        st.markdown("---")
-    
-    st.markdown(
-        '</div>',
-        unsafe_allow_html=True
-    )
+
 
 
 elif page == "Image":
